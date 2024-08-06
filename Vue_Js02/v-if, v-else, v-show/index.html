@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue JS 0 Diretiva v-if v-else intro</title>
+</head>
+<body>
+
+    <!-- <div id="app">    EXEMPLO DIRETIVA V-IF V-ELSE INTRO
+
+        <h1 v-if="status">{{ titulo }}</h1>
+        <h1 v-else="status">Não Existe titulo!</h1>
+        <h2 v-show="status">{{ titulo }}</h2>
+    </div>
+
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                status: true, //Só apresenta esse titulo se o status for true
+                titulo : 'Aprendendo Vue JS'
+            }
+        })
+    </script> -->
+
+    <!-- explicação do codigo 
+    v-show esconde o elemento no codigo html
+    v-if retira o elememto do codigo html
+    São codigos para realizar uma função especifica no componente
+    v-if, v-show, v-text, v-html, v-else
+    -->
+
+    <!-- Exemplo mais elaborado -->
+
+    <div id="app">
+        <div v-if="usuario.id == 1">
+            ID: {{ usuario.id }}, <br>
+            Nome: {{ usuario.nome}},<br>
+            Email: {{ usuario.email}},<br>
+            Profissão: {{ usuario.profissao}}
+
+        </div>
+
+        <div v-else>
+            Não existe usuario com o ID: 1
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                usuario:{
+                    id: 1,
+                    nome: 'João',
+                    email: 'j@j.com',
+                    profissao: 'Programador dos bons'
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
+
+<!-- explicação do codigo 
+    v-show esconde o elemento no codigo html
+    v-if retira o elememto do codigo html
+    São codigos para realizar uma função especifica no componente
+    v-if, v-show, v-text, v-html, v-else
+    -->
