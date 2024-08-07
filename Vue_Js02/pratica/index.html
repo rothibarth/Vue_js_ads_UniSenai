@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Vue JS - Diretivas v-if, v-else, v-show</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+
+        <!-- Se o usuario estiver autenticado, exibir mensagem de boas vindas -->
+        
+        <div v-if="autenticado">
+            <h2>Bem-vindo, {{ usuario.nome }}!</h2>
+            <button @click="logout">Sair</button>
+        </div>
+
+        <!-- Se o usuario não estiver autenticado, exibir formulario de login -->
+
+        <div v-else>
+            <h2>Faça Login</h2>
+
+            <form @submit.prevent="login">
+
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" v-model="username" required><br><br>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" v-model="password" required><br><br>
+
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+
+        <!-- Mensagem de erro exibida com v-show -->
+        <p v-show="erro" style="color: red;">Nome de usuario ou senha incorretos.</p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Aplicação de Login',
+                autenticado: false,
+                usuario: {
+                    nome: 'Felipe'
+                },
+                username: '',
+                password: '',
+                erro: false
+            },
+
+            methods:{
+                login(){
+                    //Simulação de login
+
+                    if(this.username === 'felipe.rothibarth' && this.password === 'palio'){
+                        this.autenticado = true;
+                        this.erro = false;
+                    }else{
+                        this.erro = true;
+                    }
+                },
+                logout(){
+                    this.autenticado = false;
+                    this.username = '';
+                    this.password = '';
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
